@@ -1,6 +1,6 @@
 {
     "name": "superbit-jbc",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "SuperBit extension with built-in gyro PID for JBC competition",
     "license": "MIT",
     "dependencies": {
