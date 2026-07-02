@@ -813,6 +813,26 @@ namespace JBC {
         control.onEvent(JBC_EVENT_ID, cmd, handler)
     }
 
+    /**
+     * Plot a value to MakeCode Data Viewer (serial)
+     * @param name label shown in graph, eg: "heading"
+     * @param value number to plot, eg: 0
+     */
+    //% block="plot %name = %value"
+    //% group="Tuning" weight=40
+    export function plot(name: string, value: number): void {
+        serial.writeValue(name, value)
+    }
+
+    /**
+     * Current PID correction output
+     */
+    //% block="correction"
+    //% group="Tuning" weight=39
+    export function correction(): number {
+        return _jbc_correction
+    }
+
 }
 
 // ─── JBC Joystick namespace ──────────────────────────────────────────────────
