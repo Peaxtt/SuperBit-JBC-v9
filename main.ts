@@ -452,7 +452,7 @@ let _jbc_Kd_turn: number = 0.5
 let _jbc_msperdeg: number = 6
 
 // ─── JBC namespace ───────────────────────────────────────────────────────────
-//% color="#FF9800" icon=""
+//% color="#D500F9" icon=""
 //% groups="['Setup','Movement','Gripper','Tuning']"
 const JBC_EVENT_ID = 9000
 
