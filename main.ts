@@ -452,8 +452,10 @@ let _jbc_Kd_turn: number = 0.5
 let _jbc_msperdeg: number = 6
 
 // ─── JBC namespace ───────────────────────────────────────────────────────────
-//% color="#2196F3" icon=""
-//% groups="['Setup','Movement','Gripper']"
+//% color="#FF9800" icon=""
+//% groups="['Setup','Movement','Gripper','Tuning']"
+const JBC_EVENT_ID = 9000
+
 namespace JBC {
 
     // ── Background: servo soft-ramp (10 ms) ──────────────────────────────────
@@ -569,11 +571,8 @@ namespace JBC {
     // ── Single radio handler: cmd + live PID tuning from Joystick ────────────
     function _startRadioReceiver(): void {
         radio.onReceivedValue(function (name: string, value: number) {
-            if (name == "cmd") {
-                if (value == 1) { JBC.turnDegrees(90) }
-                else if (value == 2) { JBC.moveStraight(150, 3000) }
-                else if (value == 3) { JBC.robotStop() }
-            } else if (name == "kp_s") { _jbc_Kp_straight = value }
+            if (name == "cmd") { control.raiseEvent(JBC_EVENT_ID, value) }
+            else if (name == "kp_s") { _jbc_Kp_straight = value }
             else if (name == "ki_s") { _jbc_Ki_straight = value }
             else if (name == "kd_s") { _jbc_Kd_straight = value }
             else if (name == "kp_t") { _jbc_Kp_turn = value }
@@ -587,10 +586,11 @@ namespace JBC {
     /**
      * เตรียมหุ่นยนต์ JBC: จูน IMU แล้วเริ่มทำงาน
      */
-    //% block="JBC init robot"
+    //% block="JBC init robot|group %group"
+    //% group.defl=67
     //% group="Setup" weight=100
-    export function initRobot(): void {
-        radio.setGroup(67)
+    export function initRobot(group: number = 67): void {
+        radio.setGroup(group)
         SuperBit.Servo2(SuperBit.enServo.S5, 75)
 
         // Wake MPU-6050
@@ -801,6 +801,18 @@ namespace JBC {
         _jbc_lastError = 0
     }
 
+    /**
+     * Run code when a radio command is received from Joystick
+     * @param cmd command number, eg: 1
+     * @param handler code to run
+     */
+    //% block="when cmd %cmd received"
+    //% group="Setup" weight=99
+    //% draggableParameters="reporter"
+    export function onCmdReceived(cmd: number, handler: () => void): void {
+        control.onEvent(JBC_EVENT_ID, cmd, handler)
+    }
+
 }
 
 // ─── JBC Joystick namespace ──────────────────────────────────────────────────
@@ -812,10 +824,11 @@ namespace JBCJoystick {
      * เตรียม Joystick — ตั้ง radio group 67 และเปิด plot อัตโนมัติ
      * (ค่า cur/tgt จากหุ่นจะแสดงใน MakeCode Data Viewer ทันที)
      */
-    //% block="JBC joystick init"
+    //% block="JBC joystick init|group %group"
+    //% group.defl=67
     //% group="Control" weight=100
-    export function init(): void {
-        radio.setGroup(67)
+    export function init(group: number = 67): void {
+        radio.setGroup(group)
         radio.onReceivedValue(function (name: string, value: number) {
             serial.writeValue(name, value)
         })
