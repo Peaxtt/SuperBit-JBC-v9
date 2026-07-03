@@ -567,6 +567,8 @@ namespace JBC {
         loops.everyInterval(100, function () {
             radio.sendValue("cur", Math.round(_jbc_currentHeading))
             radio.sendValue("tgt", Math.round(_jbc_targetHeading))
+            radio.sendValue("cur360", Math.round((((-_jbc_currentHeading) % 360) + 360) % 360))
+            radio.sendValue("tgt360", Math.round((((-_jbc_targetHeading) % 360) + 360) % 360))
         })
     }
 
