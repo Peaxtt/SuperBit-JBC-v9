@@ -709,6 +709,21 @@ namespace JBC {
     }
 
     /**
+     * Turn to an absolute heading (0 = start direction, + = right, - = left)
+     * @param heading target heading in degrees, eg: 90
+     */
+    //% block="turn to heading %heading °"
+    //% heading.min=-360 heading.max=360 heading.defl=90
+    //% group="Movement" weight=79
+    export function turnToHeading(heading: number): void {
+        if (!_jbc_imuEnabled) return
+        let delta = heading - _jbc_currentHeading
+        while (delta > 180) delta -= 360
+        while (delta < -180) delta += 360
+        turnDegrees(delta)
+    }
+
+    /**
      * หยุดหุ่นยนต์
      */
     //% block="stop"
