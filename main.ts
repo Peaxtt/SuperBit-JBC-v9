@@ -486,7 +486,7 @@ namespace JBC {
             let dt = (now - _jbc_lastTime) / 1000
             _jbc_lastTime = now
 
-            let dps = -(raw - _jbc_gyroOffset) / 131
+            let dps = (raw - _jbc_gyroOffset) / 131
             let threshold = _jbc_isTurning ? 0.3 : 0.5
             if (Math.abs(dps) > threshold) {
                 _jbc_currentHeading += dps * dt
@@ -565,8 +565,8 @@ namespace JBC {
     // ── Background: telemetry (100 ms) ───────────────────────────────────────
     function _startTelemetry(): void {
         loops.everyInterval(100, function () {
-            radio.sendValue("cur", Math.round(((_jbc_currentHeading % 360) + 360) % 360))
-            radio.sendValue("tgt", Math.round(((_jbc_targetHeading % 360) + 360) % 360))
+            radio.sendValue("cur", Math.round((((-_jbc_currentHeading) % 360) + 360) % 360))
+            radio.sendValue("tgt", Math.round((((-_jbc_targetHeading) % 360) + 360) % 360))
         })
     }
 
