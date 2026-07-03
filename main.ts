@@ -487,7 +487,7 @@ namespace JBC {
             _jbc_lastTime = now
 
             let dps = (raw - _jbc_gyroOffset) / 131
-            let threshold = _jbc_isTurning ? 0.3 : 1.0
+            let threshold = _jbc_isTurning ? 0.3 : 0.5
             if (Math.abs(dps) > threshold) {
                 _jbc_currentHeading += dps * dt
             }
@@ -517,6 +517,8 @@ namespace JBC {
                     } else {
                         _jbc_correction = Math.constrain(_jbc_correction, -70, 70)
                     }
+                } else {
+                    _jbc_correction = Math.constrain(_jbc_correction, -50, 50)
                 }
 
                 _jbc_lastError = error
