@@ -717,7 +717,8 @@ namespace JBC {
     //% group="Movement" weight=79
     export function turnToHeading(heading: number): void {
         if (!_jbc_imuEnabled) return
-        let delta = heading - _jbc_currentHeading
+        let cur360 = (((-_jbc_currentHeading) % 360) + 360) % 360
+        let delta = heading - cur360
         while (delta > 180) delta -= 360
         while (delta < -180) delta += 360
         turnDegrees(delta)
