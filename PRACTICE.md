@@ -7,7 +7,7 @@
 ### Practice 1.1 — เปิดหุ่น
 
 ```python
-JBC.initRobot(67)
+JBC.init_robot(67)
 ```
 
 > หุ่นจะแสดง 😴 ระหว่างเตรียม แล้วแสดง 😊 เมื่อพร้อม
@@ -18,9 +18,9 @@ JBC.initRobot(67)
 ### Practice 1.2 — เดินตรง หยุด
 
 ```python
-JBC.initRobot(67)
+JBC.init_robot(67)
 
-JBC.moveStraight(150, 2000)
+JBC.move_straight(150, 2000)
 ```
 
 > หุ่นเดินตรง 2 วินาที แล้วหยุดเอง
@@ -31,11 +31,11 @@ JBC.moveStraight(150, 2000)
 ### Practice 1.3 — ปรับความเร็ว
 
 ```python
-JBC.initRobot(67)
+JBC.init_robot(67)
 
-JBC.moveStraight(50, 2000)
-JBC.moveStraight(150, 2000)
-JBC.moveStraight(255, 2000)
+JBC.move_straight(50, 2000)
+JBC.move_straight(150, 2000)
+JBC.move_straight(255, 2000)
 ```
 
 > เดิน 3 รอบ ความเร็วต่างกัน 50 → 150 → 255
@@ -49,9 +49,9 @@ JBC.moveStraight(255, 2000)
 ### Practice 2.1 — หมุนขวา 90°
 
 ```python
-JBC.initRobot(67)
+JBC.init_robot(67)
 
-JBC.turnDegrees(90)
+JBC.turn_degrees(90)
 ```
 
 > หุ่นหมุนขวา 90 องศา
@@ -62,9 +62,9 @@ JBC.turnDegrees(90)
 ### Practice 2.2 — หมุนซ้าย
 
 ```python
-JBC.initRobot(67)
+JBC.init_robot(67)
 
-JBC.turnDegrees(-90)
+JBC.turn_degrees(-90)
 ```
 
 > ใส่เลขติดลบ = หมุนซ้าย
@@ -74,13 +74,13 @@ JBC.turnDegrees(-90)
 ### Practice 2.3 — เดินตรงแล้วเลี้ยว
 
 ```python
-JBC.initRobot(67)
+JBC.init_robot(67)
 
-JBC.moveStraight(150, 2000)
+JBC.move_straight(150, 2000)
 basic.pause(500)
-JBC.turnDegrees(90)
+JBC.turn_degrees(90)
 basic.pause(500)
-JBC.moveStraight(150, 2000)
+JBC.move_straight(150, 2000)
 ```
 
 > เดินตรง → หยุดรอ → หมุนขวา → เดินตรงต่อ
@@ -91,23 +91,23 @@ JBC.moveStraight(150, 2000)
 ### Practice 2.4 — วนสี่เหลี่ยม
 
 ```python
-JBC.initRobot(67)
+JBC.init_robot(67)
 
-JBC.moveStraight(150, 2000)
+JBC.move_straight(150, 2000)
 basic.pause(300)
-JBC.turnDegrees(90)
+JBC.turn_degrees(90)
 basic.pause(300)
-JBC.moveStraight(150, 2000)
+JBC.move_straight(150, 2000)
 basic.pause(300)
-JBC.turnDegrees(90)
+JBC.turn_degrees(90)
 basic.pause(300)
-JBC.moveStraight(150, 2000)
+JBC.move_straight(150, 2000)
 basic.pause(300)
-JBC.turnDegrees(90)
+JBC.turn_degrees(90)
 basic.pause(300)
-JBC.moveStraight(150, 2000)
+JBC.move_straight(150, 2000)
 basic.pause(300)
-JBC.turnDegrees(90)
+JBC.turn_degrees(90)
 ```
 
 > หุ่นเดินเป็นรูปสี่เหลี่ยม 4 ด้าน แล้วกลับมาหน้าเดิม
@@ -120,10 +120,10 @@ JBC.turnDegrees(90)
 ### Practice 3.1 — ดู heading ใน Data Viewer
 
 ```python
-JBC.initRobot(67)
+JBC.init_robot(67)
 
 def on_forever():
-    JBC.plot("heading", JBC.currentHeading())
+    JBC.plot("heading", JBC.current_heading())
 
 basic.forever(on_forever)
 ```
@@ -137,10 +137,10 @@ basic.forever(on_forever)
 ### Practice 3.2 — ดู heading และ correction พร้อมกัน
 
 ```python
-JBC.initRobot(67)
+JBC.init_robot(67)
 
 def on_forever():
-    JBC.plot("heading", JBC.currentHeading())
+    JBC.plot("heading", JBC.current_heading())
     JBC.plot("correction", JBC.correction())
 
 basic.forever(on_forever)
@@ -154,12 +154,12 @@ basic.forever(on_forever)
 ### Practice 3.3 — เดินตรงแล้วดู heading
 
 ```python
-JBC.initRobot(67)
+JBC.init_robot(67)
 
-JBC.moveStraight(150, 3000)
+JBC.move_straight(150, 3000)
 
 def on_forever():
-    JBC.plot("heading", JBC.currentHeading())
+    JBC.plot("heading", JBC.current_heading())
 
 basic.forever(on_forever)
 ```
@@ -174,13 +174,13 @@ basic.forever(on_forever)
 ### Practice 4.1 — reset แล้วหมุน
 
 ```python
-JBC.initRobot(67)
+JBC.init_robot(67)
 
-JBC.turnDegrees(90)
+JBC.turn_degrees(90)
 basic.pause(500)
-JBC.resetHeading()
+JBC.reset_heading()
 basic.pause(500)
-JBC.turnDegrees(90)
+JBC.turn_degrees(90)
 ```
 
 > หมุนขวา 90° → reset → หมุนขวาอีก 90°
@@ -192,14 +192,14 @@ JBC.turnDegrees(90)
 ### Practice 4.2 — reset ก่อนเริ่ม sequence
 
 ```python
-JBC.initRobot(67)
-JBC.resetHeading()
+JBC.init_robot(67)
+JBC.reset_heading()
 
-JBC.moveStraight(150, 2000)
+JBC.move_straight(150, 2000)
 basic.pause(300)
-JBC.turnDegrees(90)
+JBC.turn_degrees(90)
 basic.pause(300)
-JBC.moveStraight(150, 2000)
+JBC.move_straight(150, 2000)
 ```
 
 > reset ทันทีหลัง init เพื่อให้แน่ใจว่า heading เริ่มที่ 0
@@ -212,11 +212,11 @@ JBC.moveStraight(150, 2000)
 ### Practice 5.1 — หุบและแบคีม
 
 ```python
-JBC.initRobot(67)
+JBC.init_robot(67)
 
-JBC.closeGripper()
+JBC.close_gripper()
 basic.pause(1000)
-JBC.openGripper()
+JBC.open_gripper()
 ```
 
 > คีมหุบ รอ 1 วินาที แล้วแบ
@@ -227,19 +227,19 @@ JBC.openGripper()
 ### Practice 5.2 — เดินไปหยิบของ
 
 ```python
-JBC.initRobot(67)
-JBC.openGripper()
+JBC.init_robot(67)
+JBC.open_gripper()
 basic.pause(500)
 
-JBC.moveStraight(150, 1500)
+JBC.move_straight(150, 1500)
 basic.pause(300)
-JBC.closeGripper()
+JBC.close_gripper()
 basic.pause(800)
-JBC.moveStraight(-150, 1500)
+JBC.move_straight(-150, 1500)
 ```
 
 > เปิดคีม → เดินเข้าหาของ → หุบคีม → ถอยหลัง
-> `moveStraight(-150, ...)` = เดินถอยหลัง
+> `move_straight(-150, ...)` = เดินถอยหลัง
 
 ---
 
@@ -248,20 +248,19 @@ JBC.moveStraight(-150, 1500)
 ### Practice 6.1 — Robot รอรับคำสั่ง
 
 ```python
-JBC.initRobot(67)
-
 def on_cmd_1():
-    JBC.moveStraight(150, 2000)
+    JBC.move_straight(150, 2000)
+JBC.on_cmd_received(1, on_cmd_1)
 
 def on_cmd_2():
-    JBC.turnDegrees(90)
+    JBC.turn_degrees(90)
+JBC.on_cmd_received(2, on_cmd_2)
 
 def on_cmd_3():
-    JBC.robotStop()
+    JBC.robot_stop()
+JBC.on_cmd_received(3, on_cmd_3)
 
-JBC.onCmdReceived(1, on_cmd_1)
-JBC.onCmdReceived(2, on_cmd_2)
-JBC.onCmdReceived(3, on_cmd_3)
+JBC.init_robot(67)
 ```
 
 > หุ่นรอรับคำสั่งจาก Joystick ผ่าน radio
@@ -275,13 +274,13 @@ JBC.onCmdReceived(3, on_cmd_3)
 JBCJoystick.init(67)
 
 def on_button_a():
-    JBCJoystick.sendCmd(1)
+    JBCJoystick.send_cmd(1)
 
 def on_button_b():
-    JBCJoystick.sendCmd(2)
+    JBCJoystick.send_cmd(2)
 
 def on_button_ab():
-    JBCJoystick.sendCmd(3)
+    JBCJoystick.send_cmd(3)
 
 input.on_button_pressed(Button.A, on_button_a)
 input.on_button_pressed(Button.B, on_button_b)
@@ -298,10 +297,10 @@ input.on_button_pressed(Button.AB, on_button_ab)
 ### Practice 7.1 — เดินตรงโดยไม่ใช้ IMU
 
 ```python
-JBC.initRobot(67)
-JBC.setImu(False)
+JBC.init_robot(67)
+JBC.set_imu(False)
 
-JBC.moveStraight(150, 2000)
+JBC.move_straight(150, 2000)
 ```
 
 > ปิด IMU → หุ่นเดินโดยไม่ปรับทิศ
@@ -312,15 +311,15 @@ JBC.moveStraight(150, 2000)
 ### Practice 7.2 — เปรียบเทียบ IMU on/off
 
 ```python
-JBC.initRobot(67)
+JBC.init_robot(67)
 
-JBC.setImu(True)
-JBC.moveStraight(150, 3000)
+JBC.set_imu(True)
+JBC.move_straight(150, 3000)
 basic.pause(1000)
 
-JBC.resetHeading()
-JBC.setImu(False)
-JBC.moveStraight(150, 3000)
+JBC.reset_heading()
+JBC.set_imu(False)
+JBC.move_straight(150, 3000)
 ```
 
 > รอบแรก IMU เปิด — หุ่นพยายามเดินตรง
@@ -333,15 +332,15 @@ JBC.moveStraight(150, 3000)
 
 | Block | หน้าที่ |
 |-------|--------|
-| `JBC.initRobot(67)` | เตรียมหุ่น — ใส่ทุกครั้ง |
-| `JBC.moveStraight(speed, ms)` | เดินตรง (speed ลบ = ถอย) |
-| `JBC.turnDegrees(deg)` | หมุน (บวก=ขวา ลบ=ซ้าย) |
-| `JBC.robotStop()` | หยุด |
-| `JBC.closeGripper()` | หุบคีม |
-| `JBC.openGripper()` | แบคีม |
-| `JBC.currentHeading()` | อ่าน heading ปัจจุบัน |
-| `JBC.resetHeading()` | reset heading เป็น 0 |
+| `JBC.init_robot(67)` | เตรียมหุ่น — ใส่ทุกครั้ง |
+| `JBC.move_straight(speed, ms)` | เดินตรง (speed ลบ = ถอย) |
+| `JBC.turn_degrees(deg)` | หมุน (บวก=ขวา ลบ=ซ้าย) |
+| `JBC.robot_stop()` | หยุด |
+| `JBC.close_gripper()` | หุบคีม |
+| `JBC.open_gripper()` | แบคีม |
+| `JBC.current_heading()` | อ่าน heading ปัจจุบัน |
+| `JBC.reset_heading()` | reset heading เป็น 0 |
 | `JBC.correction()` | ค่า PID output |
 | `JBC.plot("name", value)` | ส่งค่าขึ้น Data Viewer |
-| `JBC.setImu(True/False)` | เปิด/ปิด IMU |
-| `JBC.onCmdReceived(n, fn)` | รับคำสั่งจาก Joystick |
+| `JBC.set_imu(True/False)` | เปิด/ปิด IMU |
+| `JBC.on_cmd_received(n, fn)` | รับคำสั่งจาก Joystick |
